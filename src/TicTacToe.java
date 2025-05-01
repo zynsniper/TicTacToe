@@ -24,7 +24,7 @@ public class TicTacToe{
                 System.out.println("Player's turn."); 
                 System.out.print("Enter chosen tile (1-9): ");
                 tileNo = userInput.nextInt();
-                int[] coords = GameLogic.chosenTile(tileNo);
+                int[] coords = GameLogic.chosenTile(tileNo, N);
                 int x = coords[0]; int y = coords[1];
                 
                 if(gameBoard[x][y] == ' '){
@@ -37,7 +37,7 @@ public class TicTacToe{
             else{
                 System.out.println("Bot's turn.");
                 tileNo = BotLogic.RandomNumberGenerator();
-                int[] coords = GameLogic.chosenTile(tileNo);
+                int[] coords = GameLogic.chosenTile(tileNo, N);
                 int x = coords[0]; int y = coords[1];
 
                 System.out.printf("Bot chose tile %d\n", tileNo);
