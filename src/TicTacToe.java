@@ -20,12 +20,12 @@ public class TicTacToe{
                 System.out.println("Player 1's turn."); }
             else{ System.out.println("Player 2's turn."); }
             
-            System.out.print("Enter chosen tile (1-9): ");
+            System.out.printf("Enter chosen tile (1-%d): ", N*N);
             int tileNo = userInput.nextInt();
             
             char player1 = 'X';
             char player2 = 'O';
-            int[] coords = GameLogic.chosenTile(tileNo);
+            int[] coords = GameLogic.chosenTile(tileNo, N);
             int x = coords[0]; int y = coords[1];
             
             if(gameBoard[x][y] == ' '){
