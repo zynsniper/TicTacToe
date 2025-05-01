@@ -12,12 +12,7 @@ public class TicTacToe{
 
         Scanner userInput = new Scanner(System.in);
 
-        for(int i = 0; i < gameBoard.length; i++){
-            for(int j = 0; j < gameBoard[i].length; j++){
-                System.out.print(gameBoard[i][j] + " ");
-            }
-            System.out.println(); 
-        }
+        GameLogic.printGameBoard(gameBoard);
 
         while(!GameLogic.gameEnd(gameBoard)){
             System.out.print("Enter chosen tile (1-9): ");
@@ -30,12 +25,7 @@ public class TicTacToe{
             int x = coords[0]; int y = coords[1];
             gameBoard[x][y] = symbol.charAt(0);
 
-            for(int i = 0; i < gameBoard.length; i++){
-                for(int j = 0; j < gameBoard[i].length; j++){
-                    System.out.print(gameBoard[i][j] + " ");
-                }
-                System.out.println(); 
-            }
+            GameLogic.printGameBoard(gameBoard);
         }
         
         userInput.close();
