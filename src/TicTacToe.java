@@ -16,24 +16,38 @@ public class TicTacToe{
 
         int turn = 0;
         while(!GameLogic.gameEnd(gameBoard)){
-            if(turn % 2 ==0){
-                System.out.println("Player 1's turn."); }
-            else{ System.out.println("Player 2's turn."); }
-            
-            System.out.print("Enter chosen tile (1-9): ");
-            int tileNo = userInput.nextInt();
-            
-            char player1 = 'X';
-            char player2 = 'O';
-            int[] coords = GameLogic.chosenTile(tileNo);
-            int x = coords[0]; int y = coords[1];
-            
-            if(gameBoard[x][y] == ' '){
-                gameBoard[x][y] = (turn % 2 == 0) ? player1: player2;
-                turn++;}
-            else{ System.out.println("Tile is occupied, pick another tile."); }
+            char playerSymbol = 'X';
+            char botSymbol = 'O';
+            int tileNo;
 
-            GameLogic.printGameBoard(gameBoard);
+            if(turn % 2 == 0){
+                System.out.println("Player's turn."); 
+                System.out.print("Enter chosen tile (1-9): ");
+                tileNo = userInput.nextInt();
+                int[] coords = GameLogic.chosenTile(tileNo);
+                int x = coords[0]; int y = coords[1];
+                
+                if(gameBoard[x][y] == ' '){
+                    gameBoard[x][y] = playerSymbol;
+                    turn++;}
+                else{ System.out.println("Tile is occupied, pick another tile."); }
+
+                GameLogic.printGameBoard(gameBoard);
+            }
+            else{
+                System.out.println("Bot's turn.");
+                tileNo = BotLogic.RandomNumberGenerator();
+                int[] coords = GameLogic.chosenTile(tileNo);
+                int x = coords[0]; int y = coords[1];
+
+                System.out.printf("Bot chose tile %d\n", tileNo);
+                if(gameBoard[x][y] == ' '){
+                    gameBoard[x][y] = botSymbol;
+                    turn++;}
+                else{ System.out.println("Tile is occupied, pick another tile."); }
+
+                GameLogic.printGameBoard(gameBoard);
+            }
         }
         
         userInput.close();
