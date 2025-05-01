@@ -27,10 +27,13 @@ public class TicTacToe{
             char player2 = 'O';
             int[] coords = GameLogic.chosenTile(tileNo);
             int x = coords[0]; int y = coords[1];
-            gameBoard[x][y] = (turn % 2 == 0) ? player1: player2;
+            
+            if(gameBoard[x][y] == ' '){
+                gameBoard[x][y] = (turn % 2 == 0) ? player1: player2;
+                turn++;}
+            else{ System.out.println("Tile is occupied, pick another tile."); }
 
             GameLogic.printGameBoard(gameBoard);
-            turn++;
         }
         
         userInput.close();
