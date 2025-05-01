@@ -25,7 +25,7 @@ public class TicTacToe{
             
             char player1 = 'X';
             char player2 = 'O';
-            int[] coords = GameLogic.chosenTile(tileNo);
+            int[] coords = GameLogic.chosenTile(tileNo, N);
             int x = coords[0]; int y = coords[1];
             
             if(gameBoard[x][y] == ' '){
