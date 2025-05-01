@@ -1,0 +1,41 @@
+import java.util.*;
+
+public class TicTacToe{
+    public static void main(String[] args) {
+        Scanner userInput = new Scanner(System.in);
+        int N;
+        do{
+            System.out.print("Enter desired board dimension (Min 3): ");
+            N = userInput.nextInt();
+            if(N < 3)
+                System.out.println("Board dimension must be at least 3.");
+        }while (N < 3);
+
+        char[][] gameBoard = GameLogic.generateGameBoard(N);
+        GameLogic.printGameBoard(gameBoard);
+
+        int turn = 0;
+        while(!GameLogic.gameEnd(gameBoard)){
+            if(turn % 2 ==0){
+                System.out.println("Player 1's turn."); }
+            else{ System.out.println("Player 2's turn."); }
+            
+            System.out.print("Enter chosen tile (1-9): ");
+            int tileNo = userInput.nextInt();
+            
+            char player1 = 'X';
+            char player2 = 'O';
+            int[] coords = GameLogic.chosenTile(tileNo);
+            int x = coords[0]; int y = coords[1];
+            
+            if(gameBoard[x][y] == ' '){
+                gameBoard[x][y] = (turn % 2 == 0) ? player1: player2;
+                turn++;}
+            else{ System.out.println("Tile is occupied, pick another tile."); }
+
+            GameLogic.printGameBoard(gameBoard);
+        }
+        
+        userInput.close();
+    }
+}
