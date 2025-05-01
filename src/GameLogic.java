@@ -13,26 +13,65 @@ public class GameLogic {
 
         //column check
         for(int i = 0; i < boardSize; i += 2){
-            if(gameBoard[i][0] == gameBoard[i][2] && gameBoard[i][2] == gameBoard[i][4])
-                return gameBoard[i][0];
+            char temp = gameBoard[i][0];
+            if(temp == ' ') continue;
+
+            boolean straight = true;
+            for(int j = 2; j < boardSize; j += 2){
+                if(gameBoard[i][j] != temp){
+                    straight = false;
+                    break;
+                }
+            }
+            if(straight) return temp;
         }
 
         //row check
-        for (int i = 0; i < boardSize; i += 2){
-            if(gameBoard[0][i] == gameBoard[2][i] && gameBoard[2][i] == gameBoard[4][i])
-                return gameBoard[0][i];
+        for(int i = 0; i < boardSize; i += 2){
+            char temp = gameBoard[0][i];
+            if(temp == ' ') continue;
+
+            boolean straight = true;
+            for(int j = 2; j < boardSize; j +=2){
+                if(gameBoard[j][i] != temp){
+                    straight = false;
+                    break;
+                }
+            }
+            if(straight) return temp;
         }
 
         //backward diagonal
-        if(gameBoard[0][0] == gameBoard[2][2] && gameBoard[2][2] == gameBoard[4][4]){
-            return gameBoard[0][0];
-        }
+        char temp = gameBoard[0][0];
+        if(temp != ' '){
+            boolean straight = true;
+
+            for(int i = 0; i < boardSize; i += 2){
+                if(gameBoard[i][i] != temp){
+                    straight = false;
+                    break;
+                }
+            }
+
+            if(straight) return temp;
+        };
+        
 
         //forward diagonal
-        if(gameBoard[0][4] == gameBoard[2][2] && gameBoard[2][2] == gameBoard[4][0]){
-            return gameBoard[0][4];
-        }
-        
+        temp = gameBoard[boardSize - 1][0];
+        if(temp != ' '){
+            boolean straight = true;
+
+            for(int i = 0; i < boardSize; i += 2){
+                if(gameBoard[boardSize - 1 - i][i] != temp){
+                    straight = false;
+                    break;
+                }
+            }
+
+            if(straight) return temp;
+        };
+    
         return ' ';
     }
 
