@@ -22,7 +22,7 @@ public class TicTacToe{
 
             if(turn % 2 == 0){
                 System.out.println("Player's turn."); 
-                System.out.print("Enter chosen tile (1-9): ");
+                System.out.printf("Enter chosen tile (1-%d): ", N*N);
                 tileNo = userInput.nextInt();
                 int[] coords = GameLogic.chosenTile(tileNo, N);
                 int x = coords[0]; int y = coords[1];
