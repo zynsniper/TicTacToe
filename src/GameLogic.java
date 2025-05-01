@@ -13,53 +13,73 @@ public class GameLogic {
 
         //column check
         for(int i = 0; i < boardSize; i += 2){
-            if(gameBoard[i][0] == gameBoard[i][2] && gameBoard[i][2] == gameBoard[i][4])
-                return gameBoard[i][0];
+            char temp = gameBoard[i][0];
+            if(temp == ' ') continue;
+
+            boolean straight = true;
+            for(int j = 2; j < boardSize; j += 2){
+                if(gameBoard[i][j] != temp){
+                    straight = false;
+                    break;
+                }
+            }
+            if(straight) return temp;
         }
 
         //row check
-        for (int i = 0; i < boardSize; i += 2){
-            if(gameBoard[0][i] == gameBoard[2][i] && gameBoard[2][i] == gameBoard[4][i])
-                return gameBoard[0][i];
+        for(int i = 0; i < boardSize; i += 2){
+            char temp = gameBoard[0][i];
+            if(temp == ' ') continue;
+
+            boolean straight = true;
+            for(int j = 2; j < boardSize; j +=2){
+                if(gameBoard[j][i] != temp){
+                    straight = false;
+                    break;
+                }
+            }
+            if(straight) return temp;
         }
 
         //backward diagonal
-        if(gameBoard[0][0] == gameBoard[2][2] && gameBoard[2][2] == gameBoard[4][4]){
-            return gameBoard[0][0];
-        }
+        char temp = gameBoard[0][0];
+        if(temp != ' '){
+            boolean straight = true;
+
+            for(int i = 0; i < boardSize; i += 2){
+                if(gameBoard[i][i] != temp){
+                    straight = false;
+                    break;
+                }
+            }
+
+            if(straight) return temp;
+        };
+        
 
         //forward diagonal
-        if(gameBoard[0][4] == gameBoard[2][2] && gameBoard[2][2] == gameBoard[4][0]){
-            return gameBoard[0][4];
-        }
-        
+        temp = gameBoard[boardSize - 1][0];
+        if(temp != ' '){
+            boolean straight = true;
+
+            for(int i = 0; i < boardSize; i += 2){
+                if(gameBoard[boardSize - 1 - i][i] != temp){
+                    straight = false;
+                    break;
+                }
+            }
+
+            if(straight) return temp;
+        };
+    
         return ' ';
     }
 
-    public static int[] chosenTile(int tileNo){
-        switch (tileNo) {
-            case 1:
-                return new int[]{0,0};
-            case 2:
-                return new int[]{0,2};
-            case 3:
-                return new int[]{0,4};
-            case 4:
-                return new int[]{2,0};
-            case 5:
-                return new int[]{2,2};
-            case 6:
-                return new int[]{2,4};
-            case 7:
-                return new int[]{4,0};
-            case 8:
-                return new int[]{4,2};
-            case 9:
-                return new int[]{4,4};
-            
-            default:
-                return new int[]{-1,-1};
-        }
+    public static int[] chosenTile(int tileNo, int playableTilesPerRow){
+        int row = (tileNo - 1) / playableTilesPerRow;
+        int col = (tileNo - 1) % playableTilesPerRow;
+
+        return new int[]{row * 2, col * 2};
     }
 
     public static void printGameBoard(char[][] gameBoard){
