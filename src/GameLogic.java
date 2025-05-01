@@ -63,11 +63,35 @@ public class GameLogic {
     }
 
     public static void printGameBoard(char[][] gameBoard){
-        for(int i = 0; i < gameBoard.length; i++){
-            for(int j = 0; j < gameBoard[i].length; j++){
-                System.out.print(gameBoard[i][j] + " ");
+        for(int x = 0; x < gameBoard.length; x++){
+            for(int y = 0; y < gameBoard[x].length; y++){
+                System.out.print(gameBoard[x][y] + " ");
             }
             System.out.println(); 
         }
+    }
+
+    public static char[][] generateGameBoard(int size){
+        int boardSize = size*2 - 1;
+        char[][] gameBoard = new char[boardSize][boardSize];
+
+        for(int x = 0; x < boardSize; x++){
+            for(int y = 0; y < boardSize; y++){
+                if(x % 2 == 0 && y % 2 == 0){
+                    gameBoard[x][y] = ' ';
+                }
+                else if(x % 2 == 0){
+                    gameBoard[x][y] = '|';
+                }
+                else if(y % 2 == 0){
+                    gameBoard[x][y] = '-';
+                }
+                else{
+                    gameBoard[x][y] = '+';
+                }
+            }
+        }
+
+        return gameBoard;
     }
 }
