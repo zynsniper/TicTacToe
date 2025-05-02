@@ -1,3 +1,5 @@
 src/BotLogic.class
 src/GameLogic.class
 src/TicTacToe.class
+target/classes/GameLogic.class
+target/classes/TicTacToeFX.class
