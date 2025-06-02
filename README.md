@@ -5,9 +5,9 @@ This version supports **2-player interaction** with a clean and interactive GUI.
 
 ---
 
-## 🎮 Features
+##  Features
 
-### 🖥️ JavaFX UI
+### JavaFX UI
 
 Simple JavaFX GUI, built for two-player local gameplay.
 
@@ -15,7 +15,7 @@ Simple JavaFX GUI, built for two-player local gameplay.
 
 ---
 
-### 📐 Custom Board Size
+###  Custom Board Size
 
 Ability to configure larger board sizes like 4x4, 5x5, or more.
 
@@ -23,7 +23,7 @@ Ability to configure larger board sizes like 4x4, 5x5, or more.
 
 ---
 
-### 🏆 Win Scenario Detection
+###  Win Scenario Detection
 
 The game supports full win condition checking — rows, columns, and diagonals.
 
